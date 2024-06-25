@@ -33,7 +33,12 @@ const SignInForm = () => {
             const response = await singInAuthUserWithEmailAndPassword(email, password);
             console.log(response)
             resetFormFields();
-        } catch(error) {}
+        } catch(error) {
+            if(error.code === "auth/wrong-password") {
+                alert('incorrect password for email')
+            }
+            console.log(error)
+        }
     }
 
     const handleChange = (event) => {
